@@ -1,0 +1,53 @@
+:host {
+    main {
+        box-shadow: 0 20px 70px 4px rgba(0, 0, 0, 0.1);
+        max-width: 1032px;
+        margin: 64px auto;
+        padding: 64px;
+        font-size: 1.25rem;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    #selects {
+        display: flex;
+        margin: 64px auto;
+    }
+
+    #left {
+        width: 50%;
+        margin-right: 32px;
+        text-align: right;
+    }
+
+    #right {
+        width: 50%;
+        margin-left: 32px;
+    }
+
+    label {
+        display: block;
+    }
+
+    input, select {
+        margin-top: 16px;
+        padding: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.4);
+        border-radius: 4px;
+    }
+
+    input {
+        width: 10ch;
+        margin-right: 16px;
+    }
+    
+    span {
+        display: inline-block;
+        width: 10ch;
+        margin-left: 16px;
+    }
+}

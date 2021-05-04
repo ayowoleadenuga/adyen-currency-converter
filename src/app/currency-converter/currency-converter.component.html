@@ -1,0 +1,24 @@
+<main>
+  <h1>Adyen Currency Converter</h1>
+
+  <div id="selects">
+    <div id="left">
+      <label for="from-amount">From</label>
+      <input type="number" name="from-amount" [formControl]="fromAmount">
+    
+      <select name="from-currency" [formControl]="fromCurrency">
+        <option *ngFor="let currency of currencies$ | async" [selected]="currency === 'EUR'">{{ currency }}</option>
+      </select>
+    </div>
+
+    <div id="right">
+      <label for="to-currency">To</label>
+     
+      <select name="to-currency" [formControl]="toCurrency">
+        <option *ngFor="let currency of currencies$ | async" [selected]="currency === 'GBP'" [value]="currency">{{ currency }}</option>
+      </select>
+
+      <span>{{ convertedAmount$ | async | number:'1.0-2' }}</span>
+    </div>
+  </div>
+</main>

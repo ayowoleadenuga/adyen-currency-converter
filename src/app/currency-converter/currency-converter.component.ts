@@ -18,7 +18,8 @@ export class CurrencyConverterComponent {
   date = new FormControl(this.today);
 
   currencies$ = this.currencyConverterService.latest$.pipe(
-    map(latest => [latest.base, ...Object.keys(latest.rates)])
+    map(latest => [latest.base, ...Object.keys(latest.rates)]),
+    map(latest => latest.sort())
   );
   
   conversionRate$ = combineLatest([

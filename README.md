@@ -1,6 +1,8 @@
 # Adyen Currency Converter
 Made by Otto Coster for Adyen
 
+View it on: http://ottocoster.com/adyen/
+
 ## Features
 This currency converter supports currency conversion of all major currencies. You can enter an amount in the input field, select from and to currencies and the app will convert the entered amount to the selected target currency.
 

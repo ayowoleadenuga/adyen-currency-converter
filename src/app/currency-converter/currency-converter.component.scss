@@ -105,4 +105,30 @@
             color:rgb(10, 191, 83);
         }
     }
+
+    @media screen and (max-width: 768px) {
+        main {
+            margin: 16px;
+            padding: 16px;
+        }
+
+        #selects {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #left, #right {
+            width: auto;
+            text-align: center;
+            margin: 0;
+        }
+
+        #middle {
+            margin: 32px 0;
+        }
+
+        #converted-amount {
+            margin-left: 0;
+        }
+    }
 }

@@ -10,9 +10,12 @@ import { CurrencyConverterService } from './currency-converter.service';
   styleUrls: ['./currency-converter.component.scss']
 })
 export class CurrencyConverterComponent {
+  today = new Date().toISOString().substring(0, 10);
+  
   fromAmount = new FormControl(1);
   fromCurrency = new FormControl('EUR');
   toCurrency = new FormControl('GBP');
+  date = new FormControl(this.today);
 
   currencies$ = this.currencyConverterService.latest$.pipe(
     map(latest => [latest.base, ...Object.keys(latest.rates)])
@@ -21,11 +24,18 @@ export class CurrencyConverterComponent {
   conversionRate$ = combineLatest([
     this.fromCurrency.valueChanges.pipe(startWith(this.fromCurrency.value)),
     this.toCurrency.valueChanges.pipe(startWith(this.toCurrency.value)),
+    this.date.valueChanges.pipe(startWith(this.date.value)),
   ]).pipe(
-    switchMap(([from, to]) => 
-      this.currencyConverterService.getConversionRate(from, to).pipe(
+    debounceTime(200),
+    switchMap(([from, to, date]) => {
+      if (isNaN(Date.parse(date))) {
+        date = 'latest';
+      }
+
+      return this.currencyConverterService.getConversionRate(from, to, date).pipe(
         map(ratesReponse => ratesReponse.rates[to])
       )
+    }
   ));
 
   convertedAmount$ =
@@ -38,4 +48,11 @@ export class CurrencyConverterComponent {
   );
 
   constructor(private currencyConverterService: CurrencyConverterService) { }
+
+  toggle(): void {
+    const from = this.fromCurrency.value;
+    const to = this.toCurrency.value;
+    this.fromCurrency.setValue(to)
+    this.toCurrency.setValue(from);
+  }
 }

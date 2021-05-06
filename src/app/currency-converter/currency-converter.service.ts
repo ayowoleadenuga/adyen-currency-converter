@@ -18,7 +18,7 @@ export class CurrencyConverterService {
   
   constructor(private httpClient: HttpClient) { }
   
-  getConversionRate(fromCurrency: string, toCurrency: string) {
-    return this.httpClient.get<RatesResponse>(`https://api.ratesapi.io/api/latest?base=${fromCurrency}&symbols=${toCurrency}`);
+  getConversionRate(fromCurrency: string, toCurrency: string, date: string) {
+      return this.httpClient.get<RatesResponse>(`https://api.ratesapi.io/api/${date}?base=${fromCurrency}&symbols=${toCurrency}`);
   }
 }

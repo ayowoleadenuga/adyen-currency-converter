@@ -1,27 +1,11 @@
-# AdyenCurrencyConverter
+# Adyen Currency Converter
+Made by Otto Coster for Adyen
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
+## Features
+This currency converter supports currency conversion of all major currencies. You can enter an amount in the input field, select from and to currencies and the app will convert the entered amount to the selected target currency.
 
-## Development server
+Optionally, you can select a different date to see what would be the converted amount in the past. You can select up to the year 1999 for the historical currency rates.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+As a handy shortcut, there is a switch button that switches the from and to currencies, if you realize that you want it to convert the other way around.
+## Tech info
+This app is made using Angular 11, with heavy use of rxjs pipelines for a declarative, reactive application. As API, the ratesapi.io service is used. The UI styling is based on the Adyen branding.

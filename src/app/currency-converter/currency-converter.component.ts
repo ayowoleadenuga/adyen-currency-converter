@@ -11,7 +11,7 @@ import { CurrencyConverterService } from './currency-converter.service';
 })
 export class CurrencyConverterComponent {
   today = new Date().toISOString().substring(0, 10);
-  
+
   fromAmount = new FormControl(1);
   fromCurrency = new FormControl('EUR');
   toCurrency = new FormControl('GBP');
@@ -38,21 +38,19 @@ export class CurrencyConverterComponent {
     }
   ));
 
-  convertedAmount$ =
-    combineLatest([
-      this.fromAmount.valueChanges.pipe(startWith(this.fromAmount.value), debounceTime(500)),
-      this.conversionRate$
-    ])
-  .pipe(
+  convertedAmount$ = combineLatest([
+    this.fromAmount.valueChanges.pipe(startWith(this.fromAmount.value), debounceTime(500)),
+    this.conversionRate$
+  ]).pipe(
     map(([amount, conversionRate]) => amount * conversionRate)
   );
 
   constructor(private currencyConverterService: CurrencyConverterService) { }
 
-  toggle(): void {
+  switch(): void {
     const from = this.fromCurrency.value;
     const to = this.toCurrency.value;
-    this.fromCurrency.setValue(to)
+    this.fromCurrency.setValue(to);
     this.toCurrency.setValue(from);
   }
 }

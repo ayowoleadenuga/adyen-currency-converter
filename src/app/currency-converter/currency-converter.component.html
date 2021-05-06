@@ -12,7 +12,7 @@
     </div>
 
     <div id="middle">
-      <button (click)="toggle()">
+      <button (click)="switch()">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
         </svg>
@@ -26,14 +26,14 @@
         <option *ngFor="let currency of currencies$ | async" [selected]="currency === 'GBP'" [value]="currency">{{ currency }}</option>
       </select>
 
-      <span>{{ convertedAmount$ | async | number:'1.0-2' }}</span>
+      <span id="converted-amount">{{ convertedAmount$ | async | number:'1.0-2' }}</span>
     </div>
   </div>
 
   <label for="date">On</label>
   <input type="date" name="date" [formControl]="date" min="1999-01-01" max="{{ today }}">
 
-  <div id="bottom">
+  <p id="bottom">
     This currency converter is made by Otto Coster for Adyen.
-  </div>
+  </p>
 </main>
